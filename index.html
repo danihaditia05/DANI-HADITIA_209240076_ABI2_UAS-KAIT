@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>And I Vape Store - Jual Beli & Service Vape</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #474668 0%, #10b981 100%);
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .cart-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .cart-dropdown.active {
+            max-height: 500px;
+        }
+        
+        .payment-method input:checked + label {
+            border-color: #4f46e5;
+            background-color: #f5f3ff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="gambar/logooo_40x40.jpg" alt="Logo And I Vape Store - Ilustrasi vape dengan asap membentuk awan" class="mr-2">
+                <h1 class="text-xl font-bold text-indigo-600">And I Vape Store</h1>
+            </div>
+            
+            <div class="flex items-center space-x-6">
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#home" class="text-gray-700 hover:text-indigo-600">Beranda</a>
+                    <a href="#products" class="text-gray-700 hover:text-indigo-600">Produk</a>
+                    <a href="#services" class="text-gray-700 hover:text-indigo-600">Layanan</a>
+                    <a href="#about" class="text-gray-700 hover:text-indigo-600">Tentang Kami</a>
+                </nav>
+                
+                <div class="relative">
+                    <button id="cartBtn" class="text-gray-700 hover:text-indigo-600">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </button>
+                    
+                    <div id="cartDropdown" class="cart-dropdown absolute right-0 mt-2 w-72 bg-white rounded-md shadow-xl z-20">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg border-b pb-2">Keranjang Belanja</h3>
+                            <div id="cartItems" class="max-h-60 overflow-y-auto py-2">
+                                <!-- Items akan ditambahkan secara dinamis -->
+                                <p class="text-center text-gray-500 py-4">Keranjang kosong</p>
+                            </div>
+                            <div class="border-t pt-3">
+                                <p class="flex justify-between font-semibold">
+                                    <span>Total:</span>
+                                    <span id="cartTotal">Rp 0</span>
+                                </p>
+                                <button id="checkoutBtn" class="w-full mt-2 bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 disabled:opacity-50" disabled>Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="mobileMenuBtn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-2 flex flex-col">
+                <a href="#home" class="py-2 text-gray-700 hover:text-indigo-600">Beranda</a>
+                <a href="#products" class="py-2 text-gray-700 hover:text-indigo-600">Produk</a>
+                <a href="#services" class="py-2 text-gray-700 hover:text-indigo-600">Layanan</a>
+                <a href="#about" class="py-2 text-gray-700 hover:text-indigo-600">Tentang Kami</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Selamat Datang di And I Vape Store</h1>
+                <p class="text-lg mb-6">Tempat terbaik untuk membeli vape berkualitas dan layanan service profesional.</p>
+                <div class="flex space-x-4">
+                    <a href="#products" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition">Belanja Sekarang</a>
+                    <a href="#services" class="border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-indigo-600 transition">Layanan Kami</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="gambar/logo1.png" alt="Koleksi berbagai model vape terbaru dengan warna metalik dan LED, disusun rapi di atas meja kayu" class="rounded-lg shadow-xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Produk Kami</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="gambar/VAPE Pod System Pro.webp" alt="VAPE Pod System dengan desain minimalis warna hitam dan merah, tampak modern dengan LED indicator" class="w-full h-full object-cover">
+                        <span class="absolute top-2 right-2 bg-indigo-600 text-white text-xs px-2 py-1 rounded">BEST SELLER</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">VAPE Pod System Pro</h3>
+                        <p class="text-gray-600 text-sm mb-2">Desain ringkas dengan daya tahan baterai panjang</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">Rp 350,000</span>
+                            <button class="add-to-cart bg-indigo-600 text-white px-3 py-1 rounded text-sm hover:bg-indigo-700 transition" data-id="1" data-name="VAPE Pod System Pro" data-price="350000">Tambah</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="gambar/Advanced Box Mod 200W.webp" alt="Mod vape besar dengan layar OLED warna, tampak premium dengan finishing metalik biru" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Advanced Box Mod 200W</h3>
+                        <p class="text-gray-600 text-sm mb-2">Kontrol daya hingga 200W dengan layar OLED</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">Rp 650,000</span>
+                            <button class="add-to-cart bg-indigo-600 text-white px-3 py-1 rounded text-sm hover:bg-indigo-700 transition" data-id="2" data-name="Advanced Box Mod 200W" data-price="650000">Tambah</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="gambar/Starter Kit Basic.jpg" alt="Starter kit vape untuk pemula dengan semua aksesoris termasuk charger dan botol liquid" class="w-full h-full object-cover">
+                        <span class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded">NEW</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Starter Kit Basic</h3>
+                        <p class="text-gray-600 text-sm mb-2">Paket lengkap untuk pemula vape</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">Rp 250,000</span>
+                            <button class="add-to-cart bg-indigo-600 text-white px-3 py-1 rounded text-sm hover:bg-indigo-700 transition" data-id="3" data-name="Starter Kit Basic" data-price="250000">Tambah</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="gambar/Premium E-Liquid 60ml DARK LUNA.jpeg" alt="Liquid vape berbagai rasa dalam botol kaca 60ml dengan pipet, warna-warni mencolok" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Premium E-Liquid 60ml dark luna</h3>
+                        <p class="text-gray-600 text-sm mb-2">Berbagai rasa buah dan dessert</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">Rp 120,000</span>
+                            <button class="add-to-cart bg-indigo-600 text-white px-3 py-1 rounded text-sm hover:bg-indigo-700 transition" data-id="4" data-name="Premium E-Liquid 60ml" data-price="120000">Tambah</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="gambar/Replacement Coil (5pcs).webp" alt="Coil vape dalam kemasan blister berbagai resistensi, untuk berbagai jenis vape" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Replacement Coil (5pcs)</h3>
+                        <p class="text-gray-600 text-sm mb-2">Berbagai pilihan resistensi</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">Rp 90,000</span>
+                            <button class="add-to-cart bg-indigo-600 text-white px-3 py-1 rounded text-sm hover:bg-indigo-700 transition" data-id="5" data-name="Replacement Coil (5pcs)" data-price="90000">Tambah</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="gambar/18650 Battery (Pair).webp" alt="Baterai mod 18650 dalam pasangan dengan case penyimpanan, penting untuk mod vape" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">18650 Battery (Pair)</h3>
+                        <p class="text-gray-600 text-sm mb-2">Baterai high performance 3000mAh</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">Rp 150,000</span>
+                            <button class="add-to-cart bg-indigo-600 text-white px-3 py-1 rounded text-sm hover:bg-indigo-700 transition" data-id="6" data-name="18650 Battery (Pair)", data-price="150000">Tambah</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Layanan Kami</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="text-indigo-600 text-4xl mb-4">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-2">Service & Repair</h3>
+                    <p class="text-gray-600">Perbaikan berbagai jenis vape mulai dari pod system hingga advanced mod dengan garansi 1 bulan</p>
+                    <div class="mt-4">
+                        <p class="font-semibold">Mulai dari Rp 80,000</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="text-indigo-600 text-4xl mb-4">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-2">Battery Replacement</h3>
+                    <p class="text-gray-600">Ganti baterai internal vape Anda dengan yang baru berkualitas tinggi</p>
+                    <div class="mt-4">
+                        <p class="font-semibold">Mulai dari Rp 120,000</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="text-indigo-600 text-4xl mb-4">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-2">Coil Building</h3>
+                    <p class="text-gray-600">Buat coil custom sesuai kebutuhan vaping Anda dengan berbagai pilihan wire</p>
+                    <div class="mt-4">
+                        <p class="font-semibold">Mulai dari Rp 50,000</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button id="bookServiceBtn" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition">Booking Layanan Sekarang</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h2 class="text-3xl font-bold mb-4">Tentang And I Vape Store</h2>
+                    <p class="text-gray-600 mb-4">Kami adalah toko vape terpercaya yang menyediakan berbagai produk vape berkualitas tinggi dan layanan service profesional sejak 2018.</p>
+                    <p class="text-gray-600 mb-4">Tim kami terdiri dari ahli vape berpengalaman yang siap membantu Anda menemukan produk yang sesuai dan memberikan solusi terbaik untuk kebutuhan vaping Anda.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fab fa-whatsapp fa-lg"></i></a>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fab fa-facebook fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="gambar/toko.png" alt="Toko vape modern dengan rak display berisi berbagai produk vape dan liquid, staf sedang membantu pelanggan" class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg w-full max-w-md mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold">Checkout Pembayaran</h3>
+                    <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="mb
